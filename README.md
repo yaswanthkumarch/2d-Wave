@@ -1,5 +1,5 @@
 # 2d-Wave
 
-updated codeee i haVE
+updated codeee i have
 
 Name represent in wave format.
