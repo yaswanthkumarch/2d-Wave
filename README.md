@@ -1,5 +1,3 @@
-# 2d-Wave
-
-ADDED 
+# 2d-
 
 
