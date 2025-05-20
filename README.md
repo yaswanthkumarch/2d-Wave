@@ -5,3 +5,4 @@
         <tr><td><strong>📄 File:</strong></td><td>{file_path}</td></tr>
         <tr><td><strong>📝 Commit Message:</strong></td><td>{commit_message}</td></tr>
         </table>
+
