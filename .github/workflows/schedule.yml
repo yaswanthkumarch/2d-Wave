@@ -60,19 +60,5 @@ jobs:
  
             Thanks!
  
-  deploy:
-
-    needs: build
-
-    runs-on: ubuntu-latest
-
-    environment:
-
-      name: production
-
-    steps:
-
-      - name: Deployment after approval
-
-        run: echo "Deployment approved and running..."
+  
  
