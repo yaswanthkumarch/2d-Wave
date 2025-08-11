@@ -1,0 +1,78 @@
+name: Approval
+ 
+on:
+
+  push:
+
+    branches: [main]
+
+  workflow_dispatch:
+ 
+jobs:
+
+  build:
+
+    runs-on: ubuntu-latest
+
+    outputs:
+
+      run_id: ${{ github.run_id }}
+
+    steps:
+
+      - uses: actions/checkout@v3
+ 
+      - name: Say Hello
+
+        run: echo "Hello, world!"
+ 
+      - name: Send approval request email
+
+        uses: dawidd6/action-send-mail@v3
+
+        with:
+
+          server_address: ${{ secrets.SMTP_SERVER }}
+
+          server_port: ${{ secrets.SMTP_PORT }}
+
+          username: ${{ secrets.SMTP_USERNAME }}
+
+          password: ${{ secrets.SMTP_PASSWORD }}
+
+          subject: 'Action needed: Approve deployment'
+
+          to: yaswanth@middlewaretalents.com
+
+          from: github-actions@example.com
+
+          body: |
+
+            Hello Yaswanth,
+ 
+            Please approve the deployment by clicking the link below and approving 
+
+            the deployment in the 'production' environment on GitHub Actions:
+ 
+            https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}
+ 
+            Once approved, the deployment job will proceed automatically.
+ 
+            Thanks!
+ 
+  deploy:
+
+    needs: build
+
+    runs-on: ubuntu-latest
+
+    environment:
+
+      name: production
+
+    steps:
+
+      - name: Deployment after approval
+
+        run: echo "Deployment approved and running..."
+ 
